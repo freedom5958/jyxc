@@ -1,0 +1,47 @@
+<ion-view view-title="首页" animation="no-animation">
+	
+	<div class="bar bar-subheader">
+		<app-navibar></app-navibar>
+    </div>
+	<ion-content class="bgc-basic has-subheader">
+		<ion-list>
+			<ion-item style="color:#337ab7;text-align: right;padding: 6px 44px 6px 6px;" class="item-icon-right" ng-click="selectDate()">
+				{{view.startDate}}至{{view.endDate}}
+				<i style="color:#d9534f;" class="icon ion-ios-clock"></i>
+			</ion-item>
+		</ion-list>
+		<ion-list>
+			<div class="item item-divider app-item-title">
+			    全部
+			</div>
+			<ion-item>
+				<div id="allChart" style="height:200px;"></div>
+			</ion-item>
+		</ion-list>
+		<ion-list>
+			<div class="item item-divider app-item-title">
+			    热点
+			</div>
+			<ion-item>
+				<div class="row">
+					<div class="col"><div id="hotChart" style="height:150px;"></div></div>
+					<div class="col">
+						<p style="margin: 0;">未处理的：</p>
+						<p style="text-align: right;margin: 0;" ng-repeat="h in view.waitHandle">{{h.deptName | lengthFilter:8}}：{{h.num}}条</p>
+					</div>
+				</div>
+			</ion-item>
+		</ion-list>
+		<ion-list>
+			<div class="item item-divider app-item-title">
+			    各部门
+			</div>
+			<ion-item>
+				<div id="deptsChart" style="height:200px;"></div>
+			</ion-item>
+		</ion-list>
+		<ion-list>
+			<div class="app-color-orange" style="margin: 0 15px;">很有用信息共{{view.msgNum.veryUseful}}条，有用信息共{{view.msgNum.useful}}条，一般信息共{{view.msgNum.normal}}条，无用信息共{{view.msgNum.useless}}条</div>
+		</ion-list>
+	</ion-content>
+</ion-view>

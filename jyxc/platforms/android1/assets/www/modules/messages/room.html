@@ -1,0 +1,22 @@
+<ion-view>
+	<ion-header-bar align-title="" class="bar-assertive">  
+		  <div class="buttons">
+    		<button nav-direction="back" class="button button-clear button-icon button-positive icon ion-ios-arrow-back" ng-click="HBack()"> </button>
+  		</div>
+      <h1 class="title">{{room.title}}</h1>  
+      <div class="buttons" ng-if="roomType == 'group'">
+        <button nav-direction="back" class="button button-clear button-icon button-positive icon ion-person-stalker" ng-click="goUserList()"> </button>
+      </div>
+	</ion-header-bar> 
+
+  <ion-content class="padding" delegate-handle="mainScroll">
+		<div style="height: 10px"></div>
+		<div id="content"></div>
+  </ion-content>
+  <ion-footer-bar class="bar-light chat-bar">
+    <form class="row" name="theform">
+      <input class="col col-75" type="text" ng-model="chatText" placeholder="输入消息" ng-minlength="1" ng-required="true" />
+      <button class="col button" ng-click="sendChat(chatText)" ng-disabled="theform.$invalid">发送</button>
+    </form>
+  </ion-footer-bar>
+</ion-view>

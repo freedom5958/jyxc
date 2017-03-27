@@ -1,0 +1,51 @@
+<ion-modal-view>
+	<ion-header-bar class="bar-assertive">
+		<div class="buttons">
+			<button class="button button-icon button-clear ion-ios-arrow-back" ng-click="closeFeedbackDetailModal()">
+			</button>
+		</div>
+		<h1 class="title">反馈内容</h1>
+	</ion-header-bar>
+	<ion-content class="has-header bgc-basic">
+		<!-- <div ng-if="feedback.loading" class="text-center" style="margin-top:2em;"><ion-spinner class="spinner"></ion-spinner></div> -->
+		<ul class="reback">
+			<li ng-repeat="d in feedbackDetails">
+				<div class="row header">
+					<div class="wd_70" style="margin: 0px; line-height: 30px;">
+						<img ng-src="{{d.userPhoto}}" ng-if="d.userPhoto"></img>
+						<img src="images/head_portrait.png" ng-if="!d.userPhoto"></img>						
+						<div class="pull-left">
+							<h5>{{d.userName}}</h5>
+							<h4>{{d.createDate}}</h4>
+						</div>
+					</div>
+					<div class="degreen_red wd_30">
+						<p>满意度:</p>
+						<div class="pull-left">
+							<i></i>
+							<span>{{d.satisficing}}</span>
+						</div>
+					</div>
+				</div>
+				<div class="rebody">
+					<p class="text" style="" ng-repeat="c in d.content">{{c}}</p>
+					<div class="row picture" ng-repeat="fs in d.fgs">
+						<div ng-repeat="f in fs" ng-click="showView('{{d.id}}','{{f.id}}')" class="col col-33" style="text-align: center;">
+							<div style="width:100%;height: 100%;position: relative;">
+								<!-- <img style="max-width: 80px; max-height: 80px;position: absolute;" src="images/play.png" ng-if="f.type == 'video'"> -->
+								<i style="max-width: 100px; max-height: 100px;position: absolute; padding: 20%">
+									<img  src="images/play.png" ng-if="f.type == 'video'">
+								</i>
+								<img style="max-width: 100px; max-height: 100px;" ng-src="{{f.smallPicPath}}" ng-if="f.smallPicPath">
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+		</ul>
+		<div ng-if="hasMoreDetail">
+			<p class="text-center" ng-click="loadMoreFeedbackDetail()">点击加载更多</p>
+		</div>
+	</ion-content>
+</ion-modal-view>
+

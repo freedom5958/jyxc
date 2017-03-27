@@ -1,0 +1,10 @@
+<div>
+	<div style="line-height: 34px; margin-right: 34px;">
+		<div class="app-navibar">
+			<ion-scroll delegate-handle="appNavibar" scrollbar-x="false" scrollbar-y="false" zooming="false" direction="x" style="height:35px;">
+				<span ng-repeat="item in config.items" ng-class="{true:'app-navibar-active', false:'app-navibar-inactive'}[item.active]" ng-click="goPage('{{item.id}}')">{{item.name}}</span>
+			</ion-scroll>
+		</div>
+	</div>
+	<div ng-click="edit()" style="line-height: 34px; width:34px; float: right; position: relative; top:-34px; text-align: center;" class="button button-clear">+</div>
+</div>

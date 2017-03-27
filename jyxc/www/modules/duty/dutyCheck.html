@@ -1,0 +1,46 @@
+<ion-view view-title="问责详情">
+	<ion-nav-bar class="bar-assertive">
+		<ion-nav-buttons side="left">
+			<button class="button button-icon button-clear ion-ios-arrow-back" ng-click="backParent()"></button>
+		</ion-nav-buttons>
+		<ion-nav-buttons side="right">
+			<button class="button button-icon button-clear ion-more" ng-click="dutyMore()"></button>
+		</ion-nav-buttons>
+	</ion-nav-bar>
+	<ion-content class="bgc-basic">
+		<ion-list>
+			<ion-item>
+				<h2 style="text-overflow: clip; white-space: normal;">{{view.content}}</h2>
+				<p>
+					<span style="margin: 5px 10px 0 0;">
+					{{view.createDate}}
+					</span>
+				</p>
+				<p>
+					<span class="app-color-blue" style="margin: 5px 10px 0 0;">
+					被问责部门：{{view.deptName}}
+					</span>
+				</p>
+				<p ng-if="view.reply.length == 0">
+					<span ng-click="urgeReply()" class="app-color-red" style="margin: 5px 10px 0 0;">
+					<i class="icon ion-clock"></i>催促责任部门回复
+					</span>
+				</p>
+			</ion-item>
+		</ion-list>
+		<ion-list ng-if="view.replyUserId">
+			<div class="item item-divider">
+			    被问责部门回复
+			</div>
+		</ion-list>
+		<ion-list ng-if="view.reply && view.reply.length > 0">
+			<ion-item ng-repeat="rp in view.reply">
+				<img src="img/ben.png" style="width:32px;height: 32px;float:left;">
+				<div style="margin-left: 40px;">
+					<p style="margin: 0;"><span class="app-color-blue">{{rp.replyUserName}}</span><span style="float: right;margin-right: 10px;">{{rp.replyDate}}</span></p>
+					<p style="text-overflow: clip; white-space: normal;margin: 5px 0;color: #000;">{{rp.replyContent}} </p>
+				</div>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>

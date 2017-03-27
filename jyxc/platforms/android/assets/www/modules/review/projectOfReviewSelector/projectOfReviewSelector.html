@@ -1,0 +1,24 @@
+<ion-vew>
+	<ion-header-bar align-title="" class="bar-assertive">  
+		  <div class="buttons">
+    		<button class="button button-icon button-clear ion-ios-arrow-back" ng-click="backParent()"></button>
+  		</div>
+      <h1 class="title">项目</h1>  
+      <!-- <div class="buttons">
+    		<button class="button button-clear" ng-click="makeSure()">确定</button>
+  		</div> -->
+    </ion-header-bar> 
+	<ion-content class="">
+    <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
+		<ion-list ng-if="projects.length != 0">
+  			<!-- <ion-radio ng-repeat="project in projects" ng-model="project.checked" ng-value="project.name">{{project.name}}</ion-radio> -->
+        <ion-item ng-repeat="project in projects" ng-click="selectProject(project)">
+        <div style="width: 70%;    white-space: normal;">{{project.name}}</div>
+        <span class="badge badge-assertive">{{project.recordCount}}</span>
+        </ion-item>
+		</ion-list>
+    <div ng-if="projects.length == 0" style="color: #999999; line-height: 300px;text-align: center;">
+          <span style="font-size: 16px">没有项目</span>
+    </div>
+	</ion-content>
+</ion-vew>

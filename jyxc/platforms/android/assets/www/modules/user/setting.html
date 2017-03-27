@@ -1,0 +1,20 @@
+<ion-view view-title="个人设置">
+	<ion-nav-bar class="bar-assertive">
+		<ion-nav-buttons side="left">
+			<button class="button button-icon button-clear ion-ios-arrow-back" ng-click="goBack()"></button>
+		</ion-nav-buttons>
+	</ion-nav-bar>
+	<ion-content class="bgc-basic">
+		<div class="list">
+			<ion-item class="item-icon-left item-icon-right" ng-click="goMessageSetting()">
+				<i class="icon ion-email-unread app-color-blue"></i>
+				新消息提醒设置
+				<i class="icon ion-ios-arrow-forward"></i>
+			</ion-item>
+			<ion-item class="item-icon-left" ng-click="versionUpdate()">
+				<i class="icon ion-arrow-graph-up-right app-color-red"></i>
+				版本更新 [当前版本{{constant.APP_VERSION}}]<span ng-if="variable.isUpdatable" class="badge badge-assertive pull-left">!</span>
+			</ion-item>
+		</div>
+	</ion-content>
+</ion-view>

@@ -1,0 +1,48 @@
+<ion-view view-title="评议">
+	<ion-content>
+	<div class="list">
+		<div class="item" style="background-color: #f9f9f9">
+			<div style="font-size: 14px">有需要我参与的评议, <span style="color: #1E90FF; font-size: 15px" ng-click="showMyReviewList()">点击进入</span></div>
+		</div>
+		<a class="item item-icon-right" ng-click='selectProjectOfReview()'>
+			项目:
+    		<span class="item-note">
+      			{{selectedProject.name}}
+    		</span>
+    		<i class="icon ion-ios-arrow-forward"></i>
+		</a>
+		<div class="item" style="background-color: #f9f9f9" ng-show="view.ageSta.length >0 || view.sexSta.length >0 || view. educationSta.length >0 || view. evaCrowdsSta.length >0 || view. satisficingSta.length>0">
+			<div style="font-size: 14px">已有反馈内容, <span style="color: #1E90FF; font-size: 15px">查看详情</span></div>
+		</div>
+		<div class="item item-divider">
+			年龄结构统计
+		</div>
+		<div class="item" id="ageChart" style="height: 230px" ng-show="view.ageSta.length > 0"></div>
+		<div class="item" style="text-align: center;line-height:220px" ng-hide="view.ageSta.length > 0">没有数据</div>
+
+		<div class="item item-divider">
+			性别结构统计
+		</div>
+		<div class="item" id="sexChart" style="height: 220px" ng-show="view.sexSta.length > 0"></div>
+		<div class="item" style="text-align: center;line-height:220px" ng-hide="view.sexSta.length > 0">没有数据</div>
+
+		<div class="item item-divider">
+			学历结构统计
+		</div>
+		<div class="item" id="eduChart" style="height: 230px" ng-show="view.educationSta.length > 0"></div>
+		<div class="item" style="text-align: center;line-height:220px" ng-hide="view.educationSta.length > 0">没有数据</div>
+
+		<div class="item item-divider">
+			评议人群分布统计
+		</div>
+		<div class="item" id="commentatorChart" style="height: 220px" ng-show="view.evaCrowdsSta.length > 0"></div>
+		<div class="item" style="text-align: center;line-height:220px" ng-hide="view.evaCrowdsSta.length > 0">没有数据</div>
+
+		<div class="item item-divider">
+			满意度统计
+		</div>
+		<div class="item" id="satisfactionChart" style="height: 220px" ng-show="view.satisficingSta.length > 0"></div>
+		<div class="item" style="text-align: center;line-height:220px" ng-hide="view.satisficingSta.length > 0">没有数据</div>
+	</div>
+	</ion-content>
+</ion-view>

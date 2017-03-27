@@ -1,0 +1,21 @@
+<ion-modal-view>
+	<ion-nav-bar class="bar-assertive">
+		<ion-nav-buttons side="right">
+			<button class="button button-icon button-clear" ng-click="closeEditor()">x</button>
+		</ion-nav-buttons>
+	</ion-nav-bar>
+	<ion-content class="has-header">
+		<div class="item item-divider">
+		    我的关注 <span class="navibar-item-edit-btn" ng-click="toggleEdit()">{{editStatus.text}}</span>
+		</div>
+		<div class="row" ng-repeat="gs in items">
+			<div ng-click="minius('{{g.id}}')" class="col col-4 navibar-item-edit" ng-class="{'navibar-item-edit-disable':g.closable == false,'navibar-item-edit-placeholder':g.placeholder}" ng-repeat="g in gs">{{g.name}}<span ng-if='editStatus.editing && g.closable != false && !g.placeholder' class="navibar-item-edit-oprate badge app-background-color-red">x</span></div>
+		</div>
+		<div class="item item-divider">
+		    推荐关注
+		</div>
+		<div class="row" ng-repeat="gs in recommendItems">
+			<div ng-click="plus('{{g.id}}')" class="col col-4 navibar-item-edit" ng-class="{'navibar-item-edit-disable':g.closable == false,'navibar-item-edit-placeholder':g.placeholder}" ng-repeat="g in gs">{{g.name}}<span ng-if='editStatus.editing && g.closable != false && !g.placeholder' class="navibar-item-edit-oprate badge app-background-color-green">+</span></div>
+		</div>
+	</ion-content>
+</ion-modal-view>

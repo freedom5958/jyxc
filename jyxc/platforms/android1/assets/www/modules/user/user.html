@@ -1,0 +1,58 @@
+<ion-view view-title="我">
+	<ion-header-bar align-title="" class="bar-assertive">  
+        <h1 class="title">我</h1>
+    </ion-header-bar> 
+	<ion-content class="bgc-basic">
+		<ion-list>
+			<ion-item ng-click="goUserInfo()" class="item-icon-right" style="padding:0 40px 0 0;">
+				<div class="item item-thumbnail-left" style="border: none;">
+					<img ng-if="!variable.isLogined || !variable.userPhoto" src="images/head_portrait.png">
+					<img ng-if="variable.isLogined && variable.userPhoto" ng-src="{{variable.userPhoto}}">
+					<h2 ng-if="variable.isLogined">{{variable.userName}}</h2>
+					<p ng-if="variable.isLogined">登陆帐号:{{variable.account}}</p>
+					<p ng-if="!variable.isLogined">未登陆</p>
+				</div>
+			    <i class="icon ion-ios-arrow-forward"></i>
+			</ion-item>
+			<ion-item ng-if="variable.isLogined" class="item-icon-left item-icon-right" ng-click="goUpdatePwd()">
+				<i class="icon ion-ios-person-outline app-color-red"></i>
+				修改密码
+				<i class="icon ion-ios-arrow-forward"></i>
+			</ion-item>
+		</ion-list>
+		<!-- <div class="separate"></div>
+		<ion-list>
+			<ion-item class="item-icon-left item-icon-right">
+				<i class="icon ion-trash-a app-color-orange"></i>
+				草稿箱
+				<i class="icon ion-ios-arrow-forward"></i>
+			</ion-item>
+			<ion-item class="item-icon-left item-icon-right">
+				<i class="icon ion-ios-email app-color-green"></i>
+				消息箱
+				<i class="icon ion-ios-arrow-forward"></i>
+			</ion-item>
+		</ion-list> -->
+		<div class="separate"></div>
+		<ion-list>
+			<!-- <ion-item class="item-icon-left item-icon-right" ng-click="goRegisterUser()">
+				<i style="color:#5cb85c;" class="icon ion-person-add"></i>
+				用户注册
+				<i class="icon ion-ios-arrow-forward"></i>
+			</ion-item> -->
+			<ion-item class="item-icon-left item-icon-right" ng-click="goSetting()">
+				<i class="icon ion-ios-gear app-color-blue"></i>
+				个人设置
+				<i class="icon ion-ios-arrow-forward"></i>
+			</ion-item>
+		</ion-list>
+		<div style="padding:5px 15px;" ng-if="variable.isLogined">
+			<button ng-click="doLogout()" class="button button-full button-balanced" style="border-radius: 5px;">
+			 退出当前帐号
+			</button>
+		</div>
+
+
+
+	</ion-content>
+</ion-view>

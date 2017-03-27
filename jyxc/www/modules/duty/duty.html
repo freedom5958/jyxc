@@ -1,0 +1,36 @@
+<ion-view view-title="问责">
+	<ion-nav-bar class="bar-assertive">
+		<ion-nav-buttons side="right">
+			<button class="button button-icon button-clear ion-ios-plus-outline" ng-click="addDuty()"></button>
+		</ion-nav-buttons>
+	</ion-nav-bar>
+	<ion-content class="bgc-basic">
+		<ion-list>
+			<div class="item item-divider">
+			    被问责部门未回复的
+			</div>
+		</ion-list>
+		<div ng-if="!view.notReplyAcc || view.notReplyAcc.length == 0">
+			<p class="text-center">暂无数据</p>
+		</div>
+		<ion-list ng-if="view.noreply.length != 0">
+			<ion-item ng-repeat="nr in view.notReplyAcc" class="item-icon-right" ng-click="dutyCheck('{{nr.id}}')">
+				{{nr.content}}<i class="icon ion-ios-arrow-forward"></i>
+			</ion-item>
+		</ion-list>
+		<div class="separate"></div>
+		<ion-list>
+			<div class="item item-divider">
+			    被问责部门已回复的
+			</div>
+		</ion-list>
+		<div ng-if="!view.yetReplyAcc || view.yetReplyAcc.length == 0">
+			<p class="text-center">暂无数据</p>
+		</div>
+		<ion-list ng-if="view.replied.length != 0">
+			<ion-item ng-repeat="nr in view.yetReplyAcc" class="item-icon-right" ng-click="dutyCheck('{{nr.id}}')">
+				{{nr.content}}<i class="icon ion-ios-arrow-forward"></i>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>

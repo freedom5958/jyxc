@@ -1,0 +1,22 @@
+<ion-modal-view style="background-color: rgba(0,0,0,0.2);">
+	<ion-content class="update" style="">
+		<div class="bk_header">
+			<div class="bg_img">
+			</div>
+			<div style="background-color: #fff;padding-top:10px;border-radius: 0 0 10px 10px;">
+				<div style="width: 200px; margin: auto;">
+					<div style="margin-bottom: 5px; font-size: 16px;"><span style="font-weight: bold;">提示：</span><span>系统更新至{{view.newVersion.version}}版本</span></div>
+				</div>
+				<ol style="list-style-type: decimal; margin: 10px 45px;">
+					{{view.newVersion.updateLog}}
+				</ol>
+				<div class="button-bar">
+					<a class="button" ng-click="closeUpdatePage()">取消</a>
+					<a class="button" ng-click="gotoUpdate()">立即更新</a>
+				</div>
+			</div>
+			
+		</div>
+	</ion-content>
+</ion-modal-view>
+

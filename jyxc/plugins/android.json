@@ -1,0 +1,80 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "com.ddddtech.jyxcDept"
+        },
+        "cordova-plugin-dialogs": {
+            "PACKAGE_NAME": "com.ddddtech.jyxcDept"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.ddddtech.jyxcDept"
+        },
+        "cordova-plugin-file-opener2": {
+            "PACKAGE_NAME": "com.ddddtech.jyxcDept"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.ddddtech.jyxcDept"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "com.ddddtech.jyxcDept"
+        },
+        "cordova-plugin-image-picker": {
+            "PACKAGE_NAME": "com.ddddtech.jyxcDept"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.ddddtech.jyxcDept"
+        },
+        "cordova-plugin-media-capture": {
+            "PACKAGE_NAME": "com.ddddtech.jyxcDept"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.ddddtech.jyxcDept"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.ddddtech.jyxcDept"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.ddddtech.jyxcDept"
+        },
+        "cordova-plugin-x-toast": {
+            "PACKAGE_NAME": "com.ddddtech.jyxcDept"
+        },
+        "cordova-sqlite-storage": {
+            "PACKAGE_NAME": "com.ddddtech.jyxcDept"
+        },
+        "de.appplant.cordova.plugin.local-notification": {
+            "PACKAGE_NAME": "com.ddddtech.jyxcDept"
+        },
+        "jpush-phonegap-plugin": {
+            "APP_KEY": "4de88ce13956c5dedc57d591",
+            "PACKAGE_NAME": "com.ddddtech.jyxcDept"
+        },
+        "phonegap-plugin-mobile-accessibility": {
+            "PACKAGE_NAME": "com.ddddtech.jyxcDept"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "com.ddddtech.jyxcDept"
+        },
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.ddddtech.jyxcDept"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-app-event": {
+            "PACKAGE_NAME": "com.ddddtech.jyxcDept"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.ddddtech.jyxcDept"
+        },
+        "cordova-plugin-jcore": {
+            "PACKAGE_NAME": "com.ddddtech.jyxcDept"
+        }
+    }
+}

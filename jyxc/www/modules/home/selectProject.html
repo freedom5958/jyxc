@@ -1,0 +1,18 @@
+<ion-modal-view>
+	<ion-header-bar class="bar-assertive">
+		<div class="buttons">
+			<button class="button button-icon button-clear ion-ios-arrow-back" ng-click="selectProjectSure()">
+			</button>
+		</div>
+		<h1 class="title">选择项目</h1>
+	</ion-header-bar>
+	<ion-content class="has-header">
+		<ul class="list">
+			<li class="item item-checkbox" ng-repeat="d in view.projects" ng-click="selectProject('{{d.formId}}')">
+				<label class="checkbox">
+					<input type="checkbox" ng-model="d.selected">
+				</label>{{d.name}}
+			</li>
+		</ul>
+	</ion-content>
+</ion-modal-view>

@@ -1,0 +1,29 @@
+<ion-view view-title="修改密码">
+	<ion-nav-bar class="bar-assertive">
+		<ion-nav-buttons side="left">
+			<button class="button button-icon button-clear ion-ios-arrow-back" ng-click="goBack()">
+			</button>
+		</ion-nav-buttons>
+		<ion-nav-buttons side="right">
+			<button class="button button-icon button-clear" ng-click="submitRegister()">
+			提交
+			</button>
+		</ion-nav-buttons>
+	</ion-nav-bar>
+	<ion-content>
+		<div class="list">
+			<label class="item item-input">
+				<span class="input-label"><span style="color:red;"> * </span>旧密码:</span>
+				<input type="password" ng-model="view.oldPwd">
+			</label>
+			<label class="item item-input">
+				<span class="input-label"><span style="color:red;"> * </span>新密码:</span>
+				<input type="password" ng-model="view.password">
+			</label>
+			<label class="item item-input">
+				<span class="input-label">再次输入新密码:</span>
+				<input type="password" ng-model="view.password2">
+			</label>
+		</div>
+	</ion-content>
+</ion-view>

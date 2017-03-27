@@ -1,0 +1,107 @@
+<ion-view title="反馈内容" animation="no-animation">
+	<ion-nav-bar class="bar-assertive" ng-hide="view.isSearch">
+        <ion-nav-buttons side="left">
+            <button class="button button-icon button-clear ion-ios-arrow-back" ng-click="backParent()">
+            </button>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right">
+            <button class="button button-icon button-clear ion-ios-search-strong" ng-click="startToSelect()">
+            </button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <div class="bar bar-header item-input-inset bar-assertive" ng-show="view.isSearch">
+        <button class="button button-clear" ng-click="startToDetailedSearch()">高级</button>
+        <label class="item-input-wrapper">
+            <i class="icon ion-ios-search placeholder-icon"></i>
+            <input type="search" placeholder="输入关键字搜索" ng-model="view.searchWords">
+        </label>
+        <button class="button button-clear" ng-click="cancelSearch()" ng-if="view.searchWords.trim().length == 0">取消</button>
+        <button class="button button-clear" ng-click="searchBykeys()" ng-if="view.searchWords.trim().length > 0">搜索</button>
+    </div>
+    
+    <ion-content class="has-header" style="background-color: rgb(242,242,242);}">
+        <div style="background-color: #f2f2f2;height: 280px" ng-show="view.isDetailedSearch">
+            <div style="padding:5px 15px 5px 15px">高级搜索</div>
+            <div class="list" style="margin-bottom:10px;">
+                <div class="item item-icon-right" ng-click="selectDate()">
+                    <span>时间范围</span>
+                    <span class="item-note">{{view.startDate + '-' + view.endDate}}</span>
+                    <i class="icon ion-ios-arrow-forward"></i>
+                </div>
+                <div class="item item-icon-right" ng-click="selectDept()">
+                    <span>单位/部门</span>
+                    <span class="item-note" ng-if="selectedDeptsForReview && selectedDeptsForReview.length > 0">{{selectedDeptsForReview[0].name}} <span ng-if="selectedDeptsForReview.length > 1">...</span></span>
+                    <i class="icon ion-ios-arrow-forward"></i>
+                </div>
+                <label class="item item-input item-select">
+                    <div class="input-label">职务</div>
+                    <select ng-model="view.role" ng-options="option for option in view.roleOptions"></select>
+                </label>
+            </div>
+            <div class="row">
+                <div class="col col-50" style="text-align: center;">
+                    <button id="btn_clear" class="button button-full button-balanced" ng-click="clearAllFilter()">清除</button>
+                </div>
+                <div class="col col-50" style="text-align: center;">
+                    <button id="btn_up" class="button button-full button-balanced" ng-click="confirmToSelect()">确定</button>
+                </div>
+            </div>
+        </div>
+
+        <div ng-hide="view.isDetailedSearch">
+        <ion-refresher pulling-text="刷新..." on-refresh="doRefresh()"></ion-refresher>
+            <ul class="reback">
+            <li ng-repeat="d in view.feedbackDetails">
+                <div class="row header">
+                    <div class="wd_70" style="margin: 0px; line-height: 30px;">
+                        <img ng-src="{{d.userPhoto}}" ng-if="d.userPhoto"></img>
+                        <img src="images/head_portrait.png" ng-if="!d.userPhoto"></img>                     
+                        <div class="pull-left">
+                            <h5>{{d.userName}}</h5>
+                            <h4>{{d.createDate}}</h4>
+                        </div>
+                    </div>
+                    <div class="degreen_red wd_30">
+                        <!-- <p>满意度:</p>
+                        <div class="pull-left">
+                            <i></i>
+                            <span>{{d.satisficing}}</span>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="rebody">
+                    <p class="text" style="" ng-repeat="c in d.content">{{c}}</p>
+                    <div class="row picture" ng-repeat="fs in d.fgs">
+                        <div ng-repeat="f in fs" ng-click="showView('{{d.id}}','{{f.id}}')" class="col col-33" style="text-align: center;">
+                            <div style="width:100%;height: 100%;position: relative;">
+                                <!-- <img style="max-width: 80px; max-height: 80px;position: absolute;" src="images/play.png" ng-if="f.type == 'video'"> -->
+                                <i style="max-width: 100px; max-height: 100px;position: absolute; padding: 20%">
+                                    <img  src="images/play.png" ng-if="f.type == 'video'">
+                                </i>
+                                <img style="max-width: 100px; max-height: 100px;" data-ng-src="{{f.smallPicPath}}" ng-if="f.smallPicPath">
+                                <!-- <img style="max-width: 100px; max-height: 100px;" data-ng-src="http://192.168.100.73:8080/jyxc/download?fileId=4028e4c9598735100159873f40e80008" ng-if="f.smallPicPath">  -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div ng-if="hasMoreDetail">
+            <p class="text-center" ng-click="loadMoreFeedbackDetail()">点击加载更多</p>
+        </div>
+        </div>
+
+
+        <!-- <div style="height: 400px; text-align: center;" ng-if="!view.isDetailedSearch && view.feedbackDetails.length==0">
+            <div style="margin-top: 180px">
+                <img src="images/noData.png" style="width: 100px;height: 100px"></img>
+                <div style="text-align: center;font-size: 23px;color: #999">没有数据</div>
+            </div>
+        </div> -->
+        <div ng-if="!view.isDetailedSearch && view.feedbackDetails.length==0" style="color: #999999; line-height: 300px;text-align: center;">
+            <span style="font-size: 16px" ng-if="form.pageNumber != 0">没有数据</span>
+            <span style="font-size: 16px" ng-if="form.pageNumber == 0">本月没有数据，请搜索查看历史数据</span>
+        </div>
+    </ion-content>
+</ion-view>

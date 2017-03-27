@@ -1,0 +1,23 @@
+<ion-view view-title="中华人民共和国妇女权益保障法中华人民共和国法中华人民">
+<ion-header-bar align-title="" class="bar-assertive">  
+    <div class="buttons">
+        <button class="button button-icon button-clear ion-ios-arrow-back" ng-click="HBack()"></button>
+      </div>
+        <h1 class="title">通知公告内容</h1>  
+    </ion-header-bar> 
+  <ion-content>
+  <div class="row row-bottom my-listbg col-95 my-margin-top-1">
+  <div class="list my-det" style="width:100%">
+	<h4>{{view.title}}</h4>
+    <div class="my-tim">
+    	<li style="padding-bottom:10px;">发布人：{{view.appendDept}}</li>
+        <li style="padding-bottom:10px;">发布时间：{{view.appendTime}}</li>
+    </div>
+    <div class="item-body my-font-5">
+		<img ng-src="{{img}}" ng-repeat="img in view.mobileimage" style="width:100%;height:auto;margin-bottom:10px;"/>
+		{{view.content}}
+	</div>
+  </div>
+</div>
+</ion-content>
+</ion-view>

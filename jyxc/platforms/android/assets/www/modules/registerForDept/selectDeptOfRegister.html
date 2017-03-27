@@ -1,0 +1,42 @@
+<ion-view view-title="选择部门">
+    <ion-nav-bar class="bar-assertive">
+        <ion-nav-buttons side="left">
+            <button class="button button-icon button-clear ion-ios-arrow-back" ng-click="backParent()">
+            </button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content>
+        <ul class="list">
+            <li class="item item-checkbox" ng-repeat="d in view.depts" ng-click="selectDeptForRegister(d)">
+                <label class="checkbox">
+                    <input type="checkbox" ng-model="d.selected">
+                </label>{{d.name}}
+            </li>
+        </ul>
+        
+        <!-- <div style="margin-right: 15px; margin-left: 15px">
+            <button class="button button-full button-assertive" style="border-radius: 5px"  ng-click="makeSureToRegister()">确定</button>
+        </div> -->
+    </ion-content>
+    <ion-footer-bar>
+        <button style="width: 95%; margin: 0 auto; border:0px; border-radius: 5px; background-color: #df3031;color: white" ng-click="makeSureToRegister()">确定</button>
+    </ion-footer-bar>
+</ion-view>
+
+
+
+<!-- <ion-view view-title="选择部门">
+    <ion-nav-bar class="bar-assertive">
+        <ion-nav-buttons side="left">
+            <button class="button button-icon button-clear ion-ios-arrow-back" ng-click="backParent()">
+            </button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <ion-content class="">
+        
+    
+    <button ng-click="dddd()">click</button>
+        
+    <ion-content>
+<ion-view> -->

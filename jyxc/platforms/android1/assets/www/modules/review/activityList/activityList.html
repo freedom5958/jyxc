@@ -1,0 +1,28 @@
+<ion-vew>
+	<ion-header-bar align-title="" class="bar-assertive">  
+		<div class="buttons">
+    		<button class="button button-icon button-clear ion-ios-arrow-back" ng-click="HBack()"></button>
+  		</div>
+      	<h1 class="title">活动</h1>  
+    </ion-header-bar> 
+	<ion-content>
+		<ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
+		<a class="item itemer my-listbg col-95 my-margin-top-1" ng-repeat="item in params.noticeList" ng-click="showInfo(item)">
+			<div class="row-bottom">
+			  <div class="list">
+				<h2>{{item.title}}</h2>
+				  <img ng-src="{{item.mobileimage}}" ng-if="item.mobileimage.length > 0" class="my-info-img">
+				  <div class="item-text-wrap my-font-2">
+					{{item.content}}
+				  </div>
+			  </div>
+			</div>
+		</a>
+		<div style="text-align: center;line-height: 36px;font-size: 24px; background-color: white;" ng-click="loadMore()" ng-if="params.newData.length >= params.pageSize && variable.isLogined">
+			<i class="icon ion-more" style="color: #D4D4D4"></i>
+		</div>
+		<div ng-if="params.noticeList.length == 0" style="color: #999999; line-height: 300px;text-align: center;">
+      		没有更多内容
+    	</div>
+	</ion-content>
+</ion-vew>

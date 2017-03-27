@@ -1,0 +1,48 @@
+<ion-modal-view>
+<ion-header-bar>
+<h1 class="title">用户</h1>
+<div class="buttons" ng-if="close != 'false'">
+	<button style="display:none" class="button button-clear button-icon ion-ios-close-outline" ng-click="closeLogin()"></button>
+</div>
+</ion-header-bar>
+<ion-content>
+	<div class="login-logo"></div>
+	<div>
+		<div class="list">
+			<label class="item item-input" id="list_lg">
+				<span class="input-label">账&nbsp;&nbsp;&nbsp;号：</span>
+				<input type="text" placeholder="请输入您注册的手机号" ng-model="variable.account">
+			</label>
+			<label class="item item-input" id="list_lg">
+				<span class="input-label">密&nbsp;&nbsp;&nbsp;码：</span>
+				<input type="password" placeholder="请输入密码" ng-model="variable.password">
+			</label>
+		</div>
+		<div class="separate"></div>
+		<ion-list>
+			<button class="button button-full button-balanced pbtn " id="btn_up" ng-click="doLogin()">
+				登录
+			</button>
+		</ion-list>
+		<!--<ion-list>
+			<div class="" id="btn_rgt" ng-click="toRegister()" style="text-align: right;">
+				账号注册
+			</div>
+		</ion-list>-->
+	</div>
+
+	<!-- <div ng-if="variable.isLogined">
+		<div class="list">
+			<label class="item"  id="list_lg" ng-click="devoloper()">
+				<div class="text-center">欢迎您， {{variable.userName}}！</div>
+			</label>
+		</div>
+		<div class="separate"></div>
+		<div style="padding:5px 15px;">
+			<button ng-click="doLogout()" class="button button-full button-balanced" style="border-radius: 5px;">
+			 退出当前账号
+			</button>
+		</div>
+	</div> -->
+</ion-content>
+</ion-modal-view>

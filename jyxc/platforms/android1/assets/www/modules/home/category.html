@@ -1,0 +1,85 @@
+<ion-view view-title="首页" animation="no-animation">
+	<!-- <ion-nav-bar class="bar-assertive">
+		<ion-nav-buttons side="right">
+			<button class="button button-icon button-clear ion-more" ng-click="more()"></button>
+		</ion-nav-buttons>
+	</ion-nav-bar> -->
+	<div class="bar bar-subheader">
+		<app-navibar></app-navibar>
+    </div>
+	<ion-content class="bgc-basic has-subheader">
+		<ion-list>
+			<ion-item style="color:#337ab7;text-align: right;padding: 6px 44px 6px 6px;" class="item-icon-right" ng-click="selectDate()">
+				{{view2.startDate}}至{{view2.endDate}}
+				<i style="color:#d9534f;" class="icon ion-ios-clock"></i>
+			</ion-item>
+		</ion-list>
+		<ion-list>
+			<ion-item>
+				<div class="row">
+					<div class="col"><div id="chart" style="height:150px;"></div></div>
+					<div class="col">
+						<p style="margin: 0;">未处理的：</p>
+						<p style="text-align: right;margin: 0;" ng-repeat="h in view.waitHandle">{{h.deptName | lengthFilter:8}}：{{h.num}}条</p>
+					</div>
+				</div>
+			</ion-item>
+		</ion-list>
+		<ion-list class="app-item-box" ng-repeat="ds in view.notHandled">
+			<div class="item item-divider app-item-title">
+			    {{ds.deptName}}（共{{ds.num}}条未处理）
+			</div>
+			<ion-item ng-repeat="d in ds.notHandledRecords" ng-class="{'item-thumbnail-right':d.file.length == 1}" ng-click="goDetail('{{d.id}}')">
+				<img ng-if="d.file.length == 1" src="img/ben.png">
+				<h2 style="text-overflow: clip; white-space: normal;">{{d.title}}</h2>
+				<div class="row" ng-if="d.file.length > 1">
+					<div class="col col-4" style="text-align: center;"><img style="max-width: 80px; max-height: 80px;" src="img/ben.png"></div>
+					<div class="col col-4" style="text-align: center;"><img style="max-width: 80px; max-height: 80px;" src="img/ben.png"></div>
+					<div class="col col-4" style="text-align: center;"><img style="max-width: 80px; max-height: 80px;" src="img/ben.png"></div>
+				</div>
+				<p>
+					<span style="margin: 5px 10px 0 0;">
+					<i class="icon ion-thumbsup"></i>
+					{{d.supportNum}}
+					</span>
+					<span style="margin: 5px 10px 0 0;">
+					<i class="icon ion-chatbox"></i>
+					{{d.shareNum}}
+					</span>
+					<span style="margin: 5px 10px 0 0;">{{d.createDate}}</span>
+				</p>
+			</ion-item>
+			<div ng-if="ds.notHandledRecords.length < ds.num">
+				<p class="text-center" ng-click="loadMore('{{ds.deptId}}')">点击加载更多</p>
+			</div>
+		</ion-list>
+		<ion-list class="app-item-box">
+			<div class="item item-divider app-item-title">
+			    已处理
+			</div>
+			<div ng-if="!view.handled || view.handled.length == 0">
+				<p class="text-center">暂无数据</p>
+			</div>
+			<ion-item ng-repeat="d in view.handled" ng-class="{'item-thumbnail-right':d.file.length == 1}" ng-click="goDetail('{{d.id}}')">
+				<img ng-if="d.file.length == 1" src="img/ben.png">
+				<h2 style="text-overflow: clip; white-space: normal;">{{d.title}}</h2>
+				<div class="row" ng-if="d.file.length > 1">
+					<div class="col col-4" style="text-align: center;"><img style="max-width: 80px; max-height: 80px;" src="img/ben.png"></div>
+					<div class="col col-4" style="text-align: center;"><img style="max-width: 80px; max-height: 80px;" src="img/ben.png"></div>
+					<div class="col col-4" style="text-align: center;"><img style="max-width: 80px; max-height: 80px;" src="img/ben.png"></div>
+				</div>
+				<p>
+					<span style="margin: 5px 10px 0 0;">
+					<i class="icon ion-thumbsup"></i>
+					{{d.supportNum}}
+					</span>
+					<span style="margin: 5px 10px 0 0;">
+					<i class="icon ion-chatbox"></i>
+					{{d.shareNum}}
+					</span>
+					<span style="margin: 5px 10px 0 0;">{{d.createDate}}</span>
+				</p>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>

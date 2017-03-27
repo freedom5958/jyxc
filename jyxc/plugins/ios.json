@@ -1,0 +1,69 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "com.ddtech.supervision"
+        },
+        "cordova-plugin-dialogs": {
+            "PACKAGE_NAME": "com.ddtech.supervision"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.ddtech.supervision"
+        },
+        "cordova-plugin-file-opener2": {
+            "PACKAGE_NAME": "com.ddtech.supervision"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.ddtech.supervision"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "com.ddtech.supervision"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.ddtech.supervision"
+        },
+        "cordova-plugin-media-capture": {
+            "PACKAGE_NAME": "com.ddtech.supervision"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.ddtech.supervision"
+        },
+        "cordova-plugin-x-toast": {
+            "PACKAGE_NAME": "com.ddtech.supervision"
+        },
+        "cordova-sqlite-storage": {
+            "PACKAGE_NAME": "com.ddtech.supervision"
+        },
+        "cordova-plugin-image-picker": {
+            "PHOTO_LIBRARY_USAGE_DESCRIPTION": " ",
+            "PACKAGE_NAME": "com.ddtech.jyxcDept"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.ddtech.jyxcDept"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.ddtech.jyxcDept"
+        },
+        "phonegap-plugin-mobile-accessibility": {
+            "PACKAGE_NAME": "com.ddtech.jyxcDept"
+        },
+	"jpush-phonegap-plugin": {
+            "APP_KEY": "4de88ce13956c5dedc57d591",
+            "PACKAGE_NAME": "com.ddddtech.jyxcDept"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.ddtech.supervision"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.ddtech.jyxcDept"
+        }
+    }
+}

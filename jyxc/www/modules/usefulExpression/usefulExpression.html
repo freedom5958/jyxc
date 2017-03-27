@@ -1,0 +1,24 @@
+<ion-modal-view>
+	<ion-header-bar class="bar-assertive">
+		<div class="buttons">
+			<button class="button button-icon button-clear ion-ios-arrow-back" ng-click="closeUsefulExpression()">
+			</button>
+		</div>
+		<h1 class="title">常用语</h1>
+		<div class="buttons">
+			<button class="button button-icon button-clear" ng-click="addUsefulExpression()">新增
+			</button>
+		</div>
+	</ion-header-bar>
+	<ion-content class="has-header">
+		<ion-list>
+			<ion-item ng-repeat="d in view.userfulExpression">
+				<div class="app-icon app-icon-left"></div>
+				<span>{{ d.content }}</span>
+				<ion-option-button class="button-assertive" ng-click="delUsefulExpression('{{ d.id }}')">
+				删除
+				</ion-option-button>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-modal-view>

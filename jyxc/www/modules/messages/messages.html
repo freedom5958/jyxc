@@ -1,0 +1,28 @@
+<ion-view view-title="消息">
+  <ion-nav-buttons side="left">
+    <button class="button button-clear button-icon button-positive icon ion-ios-people-outline" ng-click="openGroups()"></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button button-clear button-icon button-positive icon ion-person-add" ng-click="goFriendsList()"><i ng-if="verifyNumber > 0" style="padding: 3px;position: absolute; right: 7px;top: 4px;background-color: #ee6800;border-radius: 3px;margin-top: -3px;"></i></button>
+  </ion-nav-buttons>
+  <ion-content>
+    <img src="images/top.jpg">
+    <ion-list>
+	  <span ng-if="activities.length < 1">
+        <ion-item class="item-remove-animate item-avatar" ng-href="#/tab/factive" type="item-text-wrap"> <img ng-src="img/default_head.png" />
+          <h3> <small style="color:red">系统消息</small> </h3>
+          <p>还没有好友发信息给您，点击添加好友</p>
+          <span class="item-note"></span>
+        </ion-item>
+      </span> 
+      <span ng-repeat="room in activities">
+      <ion-item class="item-remove-animate item-avatar" nav-direction="forward" ng-href="#/room/{{room.type}}_{{room.id}}/{{room.title}}" type="item-text-wrap"> <img ng-src="{{room.thumbnail}}" />
+        <h3> <small>{{room.title}}</small> </h3>
+        <p>{{room.latest_chat}}</p>
+        <span class="item-note">{{room.activeTime}}</span>
+		<em ng-if="room.messageNumber > 0" style="padding:0px 5px ;background-color:red;color:#FFFFFF; border-radius:8px;font-size:0.7rem;position:absolute;right:15px;bottom:10px;">{{room.messageNumber}}</em>
+      </ion-item>
+      </span> 
+	</ion-list>
+  </ion-content>
+</ion-view>

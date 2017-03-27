@@ -1,0 +1,38 @@
+<ion-view view-title="诉求/建议/监督">
+	<ion-header-bar align-title="" class="bar-assertive">  
+    <div class="buttons">
+        <button class="button button-icon button-clear ion-ios-arrow-back" ng-click="HBack()"></button>
+    </div>
+    <h1 class="title">诉求/建议/监督</h1>
+	<div class="buttons">
+    	<button class="button button-icon button-clear ion-compose" ng-click="GoList()"></button>
+  	</div>
+    </ion-header-bar> 
+	<ion-content>
+		<!---->
+		<!--<div class="my-full my-forms-top my-margin-bottom-1">
+		  <li><a class="item itemer my-formsA" ng-click="goList()"><i class="icon ion-ios-paper-outline my-forms-iconD my-forms-iconC"></i><br />
+			我发起的</a></li>
+		</div>-->
+
+		<!---->
+		<div class="row col-95 my-margin-center" style="margin-top:6px;">
+		  <div ng-class="{true: 'my-tab', false: ''}[style.tabType==1]" class="col my-tab-rad my-tab-bg" ng-click="goType(1)">建议</div>
+		  <div ng-class="{true: 'my-tab', false: ''}[style.tabType==2]" class="col my-tab-rader my-tab-bg" ng-click="goType(2)">诉求</div>
+		  <div ng-class="{true: 'my-tab', false: ''}[style.tabType==3]" class="col my-tab-rade my-tab-bg" ng-click="goType(3)">监督</div>
+		</div>
+		<!---->
+		<div class="list" style="margin-bottom:20px;">
+		  <textarea class="my-text" ng-model="params.content" cols="" rows="" style="margin-top:0px;"></textarea>
+		</div>
+		<div class="checkimg">
+			<li class="check" ng-click="uploadImage()"></li>
+			<li ng-repeat="img in params.imageParams"><img ng-src="{{img.path}}" ng-click="showPic(img)"/><a ng-click="removePic(img)">x</a></li>
+		</div>
+		<div style="width:100%;height:1px solid #FFFFFF;clear:both;margin-bottom:10px;"></div>
+		<ul class="list" ng-click="deptCheck()" style="line-height:250%;">
+		  <li class="item"> {{deptData.deptName}} <i class="icon ion-ios-arrow-right my-arrow-right"></i> </li>
+		</ul>
+		<button class="button button-block button-assertive" style="width:95%;margin:auto;" ng-click="goSubmit()"> 提交 </button>
+	</ion-content>
+</ion-view>

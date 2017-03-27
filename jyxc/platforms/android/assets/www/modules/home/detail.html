@@ -1,0 +1,52 @@
+<ion-view view-title="详情">
+	<ion-nav-bar class="bar-assertive">
+		<ion-nav-buttons side="left">
+			<button class="button button-icon button-clear ion-ios-arrow-back" ng-click="backParent()"></button>
+		</ion-nav-buttons>
+	</ion-nav-bar>
+	<ion-content class="bgc-basic">
+		<div style="background-color:#f3f3f3;margin: 5px 10px;">
+			<h3>{{view.title}}</h3>
+			<p style="margin:5px 0;">
+				<span style="margin: 5px 10px 0 0;">{{view.userName}}</span>
+				<span style="margin: 5px 10px 0 0;">{{view.createDate}}</span>
+				<span style="margin: 5px 10px 0 0;">
+				<i class="icon ion-thumbsup"></i>
+				{{view.supportNum}}
+				</span>
+			</p>
+			<p class="app-color-red" style="margin:5px 0;">{{view.desc}}</p>
+		</div>
+		<ion-list class="app-item-box">
+			<ion-item>
+				<h2 style="text-overflow: clip; white-space: normal;">{{view.content}}</h2>
+				<div ng-if="view.file.length > 1" class="row">
+					<div ng-click="showImageView()" class="col col-4" style="text-align: center;"><img style="max-width: 80px; max-height: 80px;" src="img/ben.png"></div>
+					<div ng-click="showImageView()" class="col col-4" style="text-align: center;"><img style="max-width: 80px; max-height: 80px;" src="img/ben.png"></div>
+					<div ng-click="showImageView()" class="col col-4" style="text-align: center;"><img style="max-width: 80px; max-height: 80px;" src="img/ben.png"></div>
+				</div>
+				<div>
+			  		<button class="button button-small icon-left ion-stats-bars" style="margin:5px 15px 5px 10px">12'</button>
+			  	</div>
+			  	<div>
+			  		<button class="button button-small icon-left ion-location" style="margin:0px 15px 5px 10px" ng-click=showMapPosition()>位置:二环西路云南软件园</button>
+			  	</div>
+			</ion-item>
+			<div class="item item-divider app-item-title">
+			    关键流程
+			</div>
+			<ul style="background-color: #fff;">
+				<li ng-repeat="t in view.flowTrace">
+					<div style="padding:5px 10px 10px 5px">
+						<img style="width:30px;height:30px;float:left" src="/img/ben.png"></img>
+						<div style="margin-left:40px">
+						<div style="font-size:16px"><span>{{t.assigneeName}}<span> <span style="float:right; color:#999999">{{t.processDate}}<span></div>
+						<div style="font-size:17px; margin-top:8px">{{t.stepName}}</div>
+						</div>
+					</div>
+					<div style="background-color:#cccccc;height:1px;"></div>
+				</li>
+			</ul>
+		</ion-list>
+	</ion-content>
+</ion-view>

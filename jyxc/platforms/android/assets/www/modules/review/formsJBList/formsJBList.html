@@ -1,0 +1,89 @@
+<ion-vew>
+	<ion-header-bar align-title="" class="bar-assertive">  
+		<div class="buttons">
+    		<button class="button button-icon button-clear ion-ios-arrow-back" ng-click="FormHBack()"></button>
+  		</div>
+      	<h1 class="title">{{compText}}</h1>  
+    </ion-header-bar> 
+	
+	
+		<!---->
+		<div class="row col-95 my-margin-center" style="padding-top:15px;margin-top:40px;">
+		  <div class="col my-tab-rad my-tab-bg"  ng-class="{true: 'my-tab', false: ''}[params.compType==1]" ng-click="goTab(1)">建议</div>
+		  <div class="col my-tab-rader my-tab-bg"  ng-class="{true: 'my-tab', false: ''}[params.compType==2]" ng-click="goTab(2)">诉求</div>
+		  <div class="col my-tab-rade my-tab-bg"  ng-class="{true: 'my-tab', false: ''}[params.compType==3]" ng-click="goTab(3)">监督</div>
+		</div>
+		<!---->
+		<ion-content style="margin-top:50px;">
+			<ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
+
+			<div class="row-bottom item itemer  my-listbg col-95 my-margin-top-1" ng-repeat="comp in params.compList">
+			  <div class="list"> <a ng-href="#/review/forms2List/view/{{comp.compId}}/{{params.compType}}">
+				<h3 class="my-forms-font">发起人员：<span class="my-forms-c-1">{{comp.appendUser}}<i class="icon ion-chevron-right my-fl-right my-font-2"></i></span><br />
+				  发起时间：<span class="my-forms-c-2">{{comp.appendTime}}</span><br />
+				  发起类型：<span class="my-forms-c-3">{{compText}}</span><br />
+				  内容详情：</h3>
+				<div class="item-text-wrap my-font-2"> {{comp.content}} </div>
+				</a>
+
+				<div ng-click="showMap(comp);" ng-if="comp.latitude > 0 && comp.longitude > 0 && comp.fileList.length > 0" style="padding:0px 5px;margin:10px 0px;border-radius:5px;border:1px solid #DDDDDD;"><i class="ion-location" style="font-size:1.3rem;margin-right:0.5rem;vertical-align:middle"></i><span style="color:#999;line-height:1.3rem;font-size:0.7rem;">查看地理位置</span></div>
+
+				<div class="imagelist" ng-if="comp.fileList.length > 0">
+					<li ng-repeat="img in comp.fileList" ng-click="showPic(comp)"><div><img src="{{img.path}}"/></div></li>
+				</div>
+				<div style="clear:both;width:100%;height:1px;"></div>
+				<div ng-if="comp.reList.length > 0">
+					<div class="my-forms" ng-repeat="re in comp.reList"> 
+						回复详情：<span class="my-forms-c-4 item-text-wrap">{{re.content}}</span> 
+						<span class="my-forms-c-5">[{{re.deptName}} 回复]</span> 
+					</div>
+					
+				</div>
+				<div class="my-forms" ng-if="comp.isActive">
+				  <div class="row">
+					<div class="col col-80">
+					  <button class="button button-clear button-balanced" ng-click="deptCheck(0,comp)"><i class="ion-arrow-swap" data-pack="default" data-tags="switch, flip"></i> 转部门 </button>
+					</div>
+					<div class="col col-20">
+					  <button class="button button-clear button-positive" ng-click="showCon('{{comp.compId}}')"><i class="ion-arrow-return-left" data-pack="default" data-tags=""></i> 回复</button>
+					</div>
+				  </div>
+				  <div class="hide" id="con_{{comp.compId}}">
+					  <div class="row">
+					  	<div class="col">
+						  <label class="item item-input">
+							<textarea placeholder="填写回复内容" id="input_{{comp.compId}}"></textarea>
+						  </label>
+						</div>
+					  </div>
+					  <div class="row">
+					  	<div class="col col-50">
+					  	</div>
+						<div class="col col-25">
+							<label><button class="button button-small button-positive" ng-click="reContent(comp)">提交回复</button></label>
+						</div>
+					  </div>
+				  </div>
+				</div>
+				
+			  </div>
+			</div>
+			<div style="text-align: center;line-height: 36px;font-size: 24px; background-color: white;" ng-click="loadMore()" ng-if="params.newData.length >= params.pageSize">
+				<i class="icon ion-more" style="color: #D4D4D4"></i>
+			</div>
+			<div ng-if="params.compList.length == 0" style="color: #999999; line-height: 300px;text-align: center;">
+				没有更多内容
+			</div>
+
+		</ion-content>
+		<div class="popup popup-about" id="framework_model_7" style="left:0px;top:0px;height:100%;width:100%;z-index:10000;margin-left:0px;">
+			<div class="navbar" style="height:44px;">
+				<div class="navbar-inner navbar-on-center">
+					<div class="left contact-edit-link">
+						<span class="link close-popup" style="color:#999999;">关闭</span>
+					</div>
+				</div>
+			</div>
+			<div id="map" style="height:100%;"></div>
+		</div>
+</ion-vew>

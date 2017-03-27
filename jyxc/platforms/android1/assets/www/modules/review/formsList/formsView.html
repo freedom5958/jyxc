@@ -1,0 +1,41 @@
+<ion-view view-title="{{compText}}">
+<ion-header-bar align-title="" class="bar-assertive">  
+    <div class="buttons">
+        <button class="button button-icon button-clear ion-ios-arrow-back" ng-click="HBack()"></button>
+      </div>
+        <h1 class="title">详细内容</h1>  
+    </ion-header-bar> 
+  <ion-content>
+  
+<div class="row-bottom item itemer  my-listbg col-95 my-margin-top-1">
+  <div class="list">
+    <h3 class="my-forms-font">发起人员：<span class="my-forms-c-1">{{view.appendUser}}</span><br />
+      发起时间：<span class="my-forms-c-2">{{view.appendTime}}</span><br />
+      发起类型：<span class="my-forms-c-3">{{params.compType}}</span><br />
+      内容详情：</h3>
+    <div class="item-text-wrap my-font-2"> {{view.content}} </div>
+    <div class="imagelist" ng-if="view.fileList.length > 0">
+		<li ng-repeat="img in view.fileList" ng-click="showPic(view)"><div><img src="{{img.path}}"/></div></li>
+	</div>
+	<div style="clear:both;width:100%;height:1px;"></div>
+    <!---->
+	<div ng-if="view.reList.length > 0">
+		<div class="my-forms" ng-repeat="re in view.reList"> 
+			回复详情：<span class="my-forms-c-4 item-text-wrap">{{re.content}}</span> 
+			<span class="my-forms-c-5">[{{re.deptName}} 回复]</span> 
+		</div>
+	</div>
+    
+  </div>
+</div>
+
+<!---->
+<div ng-if="view.activeList.length > 0" ng-repeat="active in view.activeList">
+	<div class="row col-95 my-listbg" style="background-color:#fff;border-radius:0px;min-height:auto;border:0px;border-width:0px !important;">
+	  <div class="col col-100 my-ba-fff"><span>{{active.deptName}}</span><br />
+		</h5>
+		<span class="my-forms-c-2">{{active.content}}<span class="my-font-2 my-fl-right">{{active.activeTime}}</span></span></div>
+	</div>
+</div>
+</ion-content>
+</ion-view>

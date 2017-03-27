@@ -1,0 +1,19 @@
+<ion-modal-view id="new-group" class="modal-page">
+<ion-header-bar class="bar-stable">
+<div class="buttons">
+<button nav-direction="back" class="button button-clear button-icon button-positive icon ion-ios-arrow-back" ng-click="closeGroupUserList()"> </button>
+</div>
+<h1 class="title">群组成员</h1>
+</ion-header-bar>
+<ion-content>
+   <div class="userrow">
+		<div class="userbox" ng-click="goRoom(user)" ng-repeat="user in groupUserList">
+			<div>
+				<img src="/img/default.png" ng-src="{{user.userPhoto}}"/>
+			</div>
+			<p>{{user.nickName}}</p>
+		</div>
+		
+   </div>
+</ion-content>
+</ion-modal-view>

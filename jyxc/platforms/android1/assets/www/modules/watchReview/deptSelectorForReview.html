@@ -1,0 +1,25 @@
+<ion-modal-view>
+	<ion-header-bar class="bar-assertive">
+		<div class="buttons">
+			<button class="button button-icon button-clear ion-ios-arrow-back" ng-click="closeSelectDeptModal()">
+			</button>
+		</div>
+		<h1 class="title">选择部门</h1>
+		<div class="buttons">
+			<button class="button button-icon button-clear" ng-click="confirmSelectDept()">确定
+			</button>
+		</div>
+	</ion-header-bar>
+    <ion-content>
+    	<ion-list ng-if="view.depts.length > 0">
+  			<ion-checkbox ng-repeat="dept in view.depts" ng-model="dept.selected">{{dept.name}}</ion-checkbox>
+		</ion-list>
+		<div style="height: 400px; text-align: center;" ng-if="view.depts.length==0">
+			<div style="margin-top: 180px">
+				<img src="images/noData.png" style="width: 100px;height: 100px"></img>
+				<div style="text-align: center;font-size: 23px;color: #999">没有数据</div>
+			</div>
+		</div>
+    </ion-content>
+</ion-modal-view>
+

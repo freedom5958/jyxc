@@ -1,0 +1,23 @@
+<ion-view view-title="新消息提醒设置">
+	<ion-nav-bar class="bar-assertive">
+		<ion-nav-buttons side="left">
+			<button class="button button-icon button-clear ion-ios-arrow-back" ng-click="goBack()"></button>
+		</ion-nav-buttons>
+	</ion-nav-bar>
+	<ion-content class="bgc-basic">
+		<ion-list>
+			<ion-toggle  ng-model="view.acceptMessage">
+		        接收新消息通知
+		    </ion-toggle>
+		</ion-list>
+		<div class="separate"></div>
+		<ion-list>
+			<ion-toggle  ng-model="view.voice">
+		        声音
+		    </ion-toggle>
+		    <ion-toggle  ng-model="view.shake">
+		        震动
+		    </ion-toggle>
+		</ion-list>
+	</ion-content>
+</ion-view>

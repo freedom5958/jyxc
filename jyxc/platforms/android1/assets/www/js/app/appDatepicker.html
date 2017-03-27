@@ -1,0 +1,26 @@
+<ion-list>
+	<div class="row" style="padding-top:10px;">
+		<div class="col date-item" ng-repeat="y in datas.years" ng-class="{true:'date-item-selected'}[datas.selected && datas.selected.year && datas.selected.year == y]" ng-click="selectYear('{{y}}')">{{y}}年</div>
+	</div>
+	<hr/>
+</ion-list>
+<ion-list>
+	<div class="row" ng-repeat="ms in datas.groupMonth">
+		<div class="col date-item" ng-repeat="m in ms" ng-class="{true:'date-item-selected'}[datas.selected && datas.selected.month && datas.selected.month == m]" ng-click="selectMonth('{{m}}')">{{m}}月</div>
+	</div>
+	<hr/>
+</ion-list>
+<ion-list>
+	<div class="row">
+		<div class="col date-item">周日</div>
+		<div class="col date-item">周一</div>
+		<div class="col date-item">周二</div>
+		<div class="col date-item">周三</div>
+		<div class="col date-item">周四</div>
+		<div class="col date-item">周五</div>
+		<div class="col date-item">周六</div>
+	</div>
+	<div class="row" ng-repeat="ds in datas.groupDay">
+		<div class="col date-item" ng-repeat="d in ds" ng-class="{true:'date-item-selected'}[datas.selected && datas.selected.day && datas.selected.day == d.id]" ng-click="selectDay('{{d.id}}')">{{d.name}}</div>
+	</div>
+</ion-list>

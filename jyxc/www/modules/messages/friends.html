@@ -1,0 +1,32 @@
+<style type="text/css">
+.popup-container .popup{
+	max-height:162px;
+}
+</style>
+<ion-view hide-nav-bar="true">
+  <ion-header-bar class="bar-stable">
+    <div class="buttons">
+    <button nav-direction="back" class="button button-clear button-icon button-positive icon ion-ios-arrow-back" ng-click="FriendHBack()"> </button>
+    </div>
+    <div class="ntitle" style="padding: 5px 0;left:60px;right:60px;">
+      <div class="button-bar bar-light"> <a class="button button-outline button-positive" ng-class="{active: $state.includes('tab.friends')}" href="#/tab/friends">我的好友</a><a class="button button-outline button-positive"ng-class="{active: $state.includes('tab.factive')}" href="#/tab/factive" style="position:relative">新的好友<i ng-if="verifyNumber > 0" style="padding: 3px;position: absolute; right: 10px;top: 50%;background-color: #ee6800;border-radius: 3px;margin-top: -3px;"></i></a></div>
+    </div>
+    <div class="buttons">
+      <button class="button button-clear button-icon button-positive icon ion-ios-plus-empty" ng-click="showPromptAdd()" style="position: absolute; right: 5px;"></button>
+    </div>
+  </ion-header-bar>
+  
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-divider">
+        <p>好友列表</p>
+      </ion-item>
+      <span ng-repeat="friend in friends">
+      <ion-item class="item-avatar" type="item-text-wrap" href="#/room/user_{{friend.userId}}/{{friend.title}}" nav-direction="forward"> <img ng-src="{{friend.thumbnail}}" />
+        <h3> <small>{{friend.title}}</small> </h3>
+      </ion-item>
+      </span> 
+	</ion-list>
+    <div style="height: 60px"></div>
+  </ion-content>
+</ion-view>

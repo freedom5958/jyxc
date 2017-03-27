@@ -1,0 +1,55 @@
+<ion-view view-title="用户信息">
+	<ion-nav-bar class="bar-assertive">
+		<ion-nav-buttons side="left">
+			<button class="button button-icon button-clear ion-ios-arrow-back" ng-click="goBack()"></button>
+		</ion-nav-buttons>
+		<ion-nav-buttons side="right">
+			<button class="button button-clear" ng-click="resetUserInfo()" ng-if="view.hasChangedValue">保存</button>
+		</ion-nav-buttons>
+	</ion-nav-bar>
+	<ion-content class="bgc-basic">
+		<div class="list">
+			<ion-item class="item-icon-right" ng-click="selectUserPhoto()">
+				头像
+				<img style="width:30px;height:30px;float:right;margin-right: 10px;" ng-src="{{view.userPhoto}}" ng-if="view.userPhoto"></img>
+				<img style="width:30px;height:30px;float:right;margin-right: 10px;" ng-src="images/head_portrait.png" ng-if="!view.userPhoto"></img>
+				<i class="icon ion-ios-arrow-forward"></i>
+			</ion-item>
+			<ion-item class="item-icon-right">
+				用户名
+				<span style="float: right;" ng-bind="view.userName"></span>
+			</ion-item>
+
+			<div style="height: 15px"></div>
+			<label class="item item-input item-select">
+                <div class="input-label">
+                    性别
+                </div>
+                <select ng-model="view.sex" ng-options="option for option in view.sexOptions" ng-change="changeValue()">
+                </select>
+            </label>
+
+            <label class="item item-input">
+                <div class="input-label">
+                    年龄
+                </div>
+                <input type="number" ng-model="view.age" ng-change="changeValue()" style="text-align: right;ime-mode:disabled;" onpaste="return false;">
+            </label>
+
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    学历
+                </div>
+                <select ng-model="view.education" ng-options="option for option in view.educationOptions" ng-change="changeValue()">
+                </select>
+            </label>
+
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    职务
+                </div>
+                <select ng-model="view.role" ng-options="option for option in view.roleOptions" ng-change="changeValue()"></select>
+            </label>
+		</div>
+	</ion-content>
+</ion-view>

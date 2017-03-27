@@ -1,0 +1,55 @@
+
+<ion-view view-title="评议">
+	<ion-content class="bgc-basic">
+		<div ng-if="view.datas.waitEvaProject.length > 0" class="title_d">有需要我参与的评议, <a href="javascript:;" ng-click="showMyReviewList()">点击进入</a></div>
+		<ion-list>
+			<ion-item class="item-icon-right" ng-click="goSelectProject()">项目
+			<span ng-if="!view.selectedProjectName" style="float: right;">请选择</span><span style="float: right;" ng-bind="view.selectedProjectName | lengthFilter:10"></span><i class="icon ion-ios-arrow-forward"></i></ion-item>
+		</ion-list>
+		<div ng-if="view.loading" class="text-center" style="margin-top:2em;"><ion-spinner class="spinner"></ion-spinner></div>
+		<div ng-if="!view.loading && !view.hasData">
+			<p class="text-center">暂无数据</p>
+		</div>
+		<div ng-if="view.hasData" class="title_d">已有反馈内容，点击进入<a href="javascript:;" ng-click="goFeedbackDetail()">查看详情</a></div>
+		<ion-list ng-show="view.hasData && view.datas.ageSta.length > 0">
+			<div class="item item-divider list_rw">
+			    年龄结构统计
+			</div>
+			<ion-item>
+				<div id="chartAge" style="height:200px;"></div>
+			</ion-item>
+		</ion-list>
+		<ion-list ng-show="view.hasData && view.datas.sexSta.length > 0">
+			<div class="item item-divider list_rw">
+			    性别结构统计
+			</div>
+			<ion-item>
+				<div id="chartSex" style="height:200px;"></div>
+			</ion-item>
+		</ion-list>
+		<ion-list ng-show="view.hasData && view.datas.educationSta.length > 0">
+			<div class="item item-divider list_rw">
+			    学历结构统计
+			</div>
+			<ion-item>
+				<div id="chartEdu" style="height:200px;"></div>
+			</ion-item>
+		</ion-list>
+		<ion-list ng-show="view.hasData && view.datas.evaCrowdsSta.length > 0">
+			<div class="item item-divider list_rw">
+			    评议人群分布统计
+			</div>
+			<ion-item>
+				<div id="chartCrowd" style="height:200px;"></div>
+			</ion-item>
+		</ion-list>
+		<ion-list ng-show="view.hasData && view.datas.satisficingSta.length > 0" style="display: none;">
+			<div class="item item-divider list_rw">
+			    满意度统计
+			</div>
+			<ion-item>
+				<div id="chartSatis" style="height:200px;"></div>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>

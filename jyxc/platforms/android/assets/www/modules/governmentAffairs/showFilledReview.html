@@ -1,0 +1,90 @@
+<ion-vew>
+    <ion-header-bar align-title="" class="bar-assertive">  
+        <div class="buttons">
+            <button class="button button-icon button-clear ion-ios-arrow-back" ng-click="backParent()"></button>
+        </div>
+        <h1 class="title">评议信息</h1>  
+    </ion-header-bar> 
+    <ion-content class="">
+      <div  ng-if="view.fillForms.length > 0">
+        <div style="background-color: #f7f7f7; padding:  5px 10px 5px 10px">
+            <!-- <div style="font-size: 15px; color: #EE2C2C">请如实填写，你的反馈对政府相关部门工作的改进起着至关重要的作用。</div> -->
+            <!-- <img ng-src="{{view.descriptionFile.smallPicPath}}" style="display:block; margin:0 auto; height: 200px; width: auto;" ng-if="view.descriptionFile.smallPicPath" ng-click="showImage('{{view.descriptionFile.path}}')"></img> -->
+            <img data-ng-src="{{view.descriptionFile.path}}" style="display:block; margin:0 auto; height: auto; width: 95%;" ng-if="view.descriptionFile.path" ng-click="showDescriptImage('{{view.descriptionFile.path}}')"></img>
+            <!-- <div style="width:100%; height: 200px;background-image: url({{view.descriptionFile.smallPicPath}}) no-repeat;"></div> -->
+            <p ng-if="view.description && view.descriptionFile.path" style="font-size: 14px">{{view.description}}</p>
+            <p ng-if="view.description && !view.descriptionFile.path" style="font-size: 16px;font-weight: bold;color: #FF2D2D">{{view.description}}</p>
+            <!-- <p><i class="icon ion-android-share-alt"></i><span style="color: #90EE90">点我查看具体目标完成情况</span></p> -->
+            <p ng-if="view.dept"><span>被评议部门: </span><span>{{view.dept}}</span></p>
+        </div>
+
+        <div class="list mb_none">
+            <div ng-repeat="fillItem in view.fillForms">
+                <label class="item item-input  item-text-wrap" ng-if="fillItem.type == 'radio'">
+                    <div class="input-label">
+                    {{fillItem.title}}:<span style="color: red" ng-if="fillItem.required">*</span>
+                    </div>
+                    <div style="width: 100%; color: #46A3FF" ng-if="fillItem.fillData">{{fillItem.fillData}}</div>
+                    <div style="width: 100%; color: #999999" ng-if="!fillItem.fillData">未填写</div>
+                </label>
+
+                <label class="item item-input  item-text-wrap" ng-if="fillItem.type == 'select'">
+                  <div class="input-label">
+                    {{fillItem.title}}:<span style="color: red" ng-if="fillItem.required">*</span>
+                  </div>
+                    <div style="width: 100%; color: #46A3FF" ng-if="fillItem.fillData">{{fillItem.fillData}}</div>
+                    <div style="width: 100%; color: #999999" ng-if="!fillItem.fillData">未填写</div>
+                </label>
+
+                <label class="item item-input item-text-wrap" ng-if="fillItem.type == 'number'">
+                  <div class="input-label">
+                  {{fillItem.title}}:<span style="color: red" ng-if="fillItem.required">*</span>
+                  </div>
+                    <div style="width: 100%; color: #46A3FF" ng-if="fillItem.fillData">{{fillItem.fillData}}</div>
+                    <div style="width: 100%; color: #999999" ng-if="!fillItem.fillData">未填写</div>
+                </label>
+
+                <label class="item item-input item-text-wrap" ng-if="fillItem.type == 'text'">
+                  <div class="input-label">
+                  {{fillItem.title}}:<span style="color: red" ng-if="fillItem.required">*</span>
+                  </div>
+                    <div style="width: 100%; color: #46A3FF" ng-if="fillItem.fillData">{{fillItem.fillData}}</div>
+                    <div style="width: 100%; color: #999999" ng-if="!fillItem.fillData">未填写</div>
+                </label>
+
+                <div class="item item-text-wrap" style="padding:8px 15px;" ng-if="fillItem.type == 'textarea'">
+                    <div>{{fillItem.title}}:<span style="color: red" ng-if="fillItem.required">*</span></div>
+                    <div style="width: 100%; color: #46A3FF" ng-if="fillItem.fillData">{{fillItem.fillData}}</div>
+                    <div style="width: 100%; color: #999999" ng-if="!fillItem.fillData">未填写</div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div style="height: 15px; background-color: #f7f7f7" ng-if="imageList.length > 0 || video.hasVideo"></div>
+
+        <div style="padding: 8px 15px">
+          
+          <img style="width: 70px; height:70px; margin-right: 10px" ng-repeat="img in imageList" src="{{img.smallPicPath}}" ng-if="img.smallPicPath" ng-click="showImage($index)"></img>
+
+        </div>
+
+        <div style="height: 1px; background-color: #f7f7f7" ng-if="video.hasVideo"></div>
+
+        <div ng-if="video.hasVideo">
+          <img style="width: 70px; height: 70px; margin-left: 15px; margin-top: 8px; " ng-src="{{video.smallPicPath}}" ng-click="showVideo()">
+          <i style="position: relative; left: -63px;top: -11px" ng-click="showVideo()">
+              <img style="width: 50px; height: 50px;" src="images/play.png"></img>
+          </i>
+        </div>
+
+        <div style="height: 20px; background-color: white"></div>
+
+    </div>
+    <div ng-if="view.fillForms.length == 0" style="color: #999999; line-height: 300px;text-align: center;">
+      没有表单数据
+    </div>
+    <!-- {{view.fillForms}} -->
+  </ion-content>
+</ion-vew>

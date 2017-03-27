@@ -1,0 +1,42 @@
+<ion-modal-view>
+	<ion-header-bar class="bar-assertive">
+	<h1 class="title">发起问责</h1>
+	</ion-header-bar>
+	<ion-content class="has-header">
+		<ion-list>
+			<ion-item class="item-icon-right item-divider" ng-click="selectUsefulExpression()">常用语
+			<i class="icon ion-edit" ng-click="goEditUsefulExpression($event)"></i></ion-item>
+		</ion-list>
+		<ion-list>
+			<textarea ng-model="view.form.dutyContent" class="border-basic" rows="8" style="width:100%;padding: 5px;" placeholder="请填写问责内容"></textarea>
+		</ion-list>
+		<ion-list>
+			<ion-item class="item-icon-right" ng-click="goSelectDept()">被问责部门
+			<span ng-if="!view.selectedDeptName" style="float: right;">请选择</span><span style="float: right;" ng-bind="view.selectedDeptName"></span><i class="icon ion-ios-arrow-forward"></i></ion-item>
+		</ion-list>
+	</ion-content>
+	<div class="tabs">
+		<div class="button-bar">
+			<a class="button" ng-click="sendDutyCancel()">取消</a>
+			<a class="button button-assertive" ng-click="sendDutySure()">发送</a>
+		</div>
+	</div>
+<div class="picker-modal picker-info">
+	<div class="toolbar">
+		<div class="toolbar-inner">
+			<div class="left">请选择常用语</div>
+			<div class="right"><a href="#" class="close-picker" ng-click="selectUsefulExpressionCancel()">完成</a></div>
+		</div>
+	</div>
+	<div class="picker-modal-inner">
+		<ion-content style="margin-top:-44px;">
+			<ion-list>
+				<ion-item ng-repeat="ue in view.userfulExpression" class="item-icon-right" ng-click="selectUsefulExpressionSure('{{ue.content}}')">
+				{{ue.content}}
+				</ion-item>
+			</ion-list>
+		</ion-content>
+		
+	</div>
+</div>
+</ion-modal-view>

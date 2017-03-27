@@ -1,0 +1,125 @@
+<ion-vew>
+    <ion-header-bar align-title="" class="bar-assertive">  
+        <div class="buttons">
+            <button class="button button-icon button-clear ion-ios-arrow-back" ng-click="backParent()"></button>
+        </div>
+        <h1 class="title">请如实填写</h1>
+		<div class="buttons" ng-if="view.satisficingSta.length < 1">
+    		<button class="button button-clear" ng-click="goProject(view)">统计数据</button>
+  		</div>
+    </ion-header-bar> 
+    <ion-content class="">
+      <div  ng-if="view.fillForms.length > 0" style="background-color:#f5fdfd;">
+        <div style="background-color: #FFFFFF; padding:  5px 10px 5px 10px;border-bottom:1px solid #DDDDDD;box-shadow:0px 0px 3px #DDDDDD;">
+            <!-- <div style="font-size: 15px; color: #EE2C2C">请如实填写，你的反馈对政府相关部门工作的改进起着至关重要的作用。</div> -->
+            <!-- <img ng-src="{{view.descriptionFile.smallPicPath}}" style="display:block; margin:0 auto; height: 200px; width: auto;" ng-if="view.descriptionFile.smallPicPath" ng-click="showImage('{{view.descriptionFile.path}}')"></img> -->
+            <img data-ng-src="{{view.descriptionFile.path}}" style="display:block; margin:0 auto; height: auto; width: 95%;" ng-if="view.descriptionFile.path" ng-click="showImage('{{view.descriptionFile.path}}')"></img>
+            <!-- <div style="width:100%; height: 200px;background-image: url({{view.descriptionFile.smallPicPath}}) no-repeat;"></div> -->
+            <p ng-if="view.description && view.descriptionFile.path" style="font-size: 14px">{{view.description}}</p>
+            <p ng-if="view.description && !view.descriptionFile.path" style="font-size: 16px;font-weight: bold;color: #FF2D2D">{{view.description}}</p>
+            <!-- <p><i class="icon ion-android-share-alt"></i><span style="color: #90EE90">点我查看具体目标完成情况</span></p> -->
+            <p ng-if="view.dept"><span>被测部门: </span><span>{{view.dept}}</span></p>
+        </div>
+
+		<div style="margin:10px 0px;background-color:#FFFFFF;border-top:1px solid #DDDDDD;border-bottom:1px solid #DDDDDD;padding:18px 15px;box-shadow:0px 0px 3px #DDDDDD;" ng-if="view.satisficingSta.length > 0">
+			<span ng-repeat="sat in view.satisficingSta" style="padding:5px 10px;margin:5px;border-radius:5px;color:#FFFFFF;background-color:#63e2ff">
+				{{sat.title}}：{{sat.value}}人
+			</span>
+		</div>
+
+        <div class="list mb_none" style="box-shadow:0px 0px 3px #DDDDDD;">
+            <div ng-repeat="fillItem in view.fillForms">
+                <label class="item item-input item-select item-text-wrap" ng-if="fillItem.type == 'radio'">
+                    <div class="input-label">
+                    {{fillItem.title}}:<span style="color: red" ng-if="fillItem.required">*</span>
+                    </div>
+                    <select ng-model="fillItem.fillData" ng-options="option for option in fillItem.options"></select>
+                </label>
+
+                <label class="item item-input item-select item-text-wrap" ng-if="fillItem.type == 'select'">
+                  <div class="input-label">
+                    {{fillItem.title}}:<span style="color: red" ng-if="fillItem.required">*</span>
+                  </div>
+                  <select ng-model="fillItem.fillData" ng-options="option for option in fillItem.options">
+                  </select>
+                </label>
+
+                <!--多选-->
+                <!-- <label class="item item-input item-select" ng-if="fillItem.type == 'select'">
+                  <div class="input-label">
+                  {{fillItem.title}}
+                  </div>
+                  <select ng-model="fillItem.fillData" ng-options="option for option in fillItem.options"  multiple="multiple"></select>
+                </label> -->
+
+
+                <!-- <label class="item item-input item-stacked-label" ng-if="fillItem.type == 'textarea'">
+                  <div class="input-label">
+                  {{fillItem.title}}<span style="color: red" ng-if="fillItem.required">*</span>
+                  </div>
+                  <textarea placeholder="{{fillItem.placeholder | lengthFilter:10}}" ng-model="fillItem.fillData"></textarea>
+                </label> -->
+
+                <label class="item item-input item-text-wrap" ng-if="fillItem.type == 'number'">
+                  <div class="input-label">
+                  {{fillItem.title}}:<span style="color: red" ng-if="fillItem.required">*</span>
+                  </div>
+                  <input type="number" placeholder="{{fillItem.placeholder}}" ng-model="fillItem.fillData" style="color: #46A3FF">
+                </label>
+
+                <label class="item item-input item-text-wrap" ng-if="fillItem.type == 'text'">
+                  <div class="input-label">
+                  {{fillItem.title}}:<span style="color: red" ng-if="fillItem.required">*</span>
+                  </div>
+                <input type="text" placeholder="{{fillItem.placeholder}}" ng-model="fillItem.fillData" style="color: #46A3FF">
+                </label>
+
+                <div class="item item-text-wrap" style="padding:8px 15px;" ng-if="fillItem.type == 'textarea'">
+                    <div>{{fillItem.title}}:<span style="color: red" ng-if="fillItem.required">*</span></div>
+                    <textarea placeholder="{{fillItem.placeholder | placeHolderLengthFilter:10}}" ng-model="fillItem.fillData" textarea-auto="true" type="text" style="width: 100%; color: #46A3FF"></textarea>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div style="height: 10px; background-color: #f7f7f7;"></div>
+
+        <div class="item item-input" style="box-shadow:0px 0px 3px #DDDDDD;">
+          <div class="input-label">
+            上传图片(1~3张):
+          </div>
+          <!-- <span>上传图片(1~3张):</span> -->
+          <button class="button button-small icon ion-plus" style="width: 35px;border-style:dashed" ng-click="selectPicture($event,1)" ng-if="imageList.length == 0"></button>
+          <img style="width: 50px; height:50px;border-style:dashed;" src="{{imageList[0]}}" ng-if="imageList.length > 0" ng-click="showImage(imageList[0])"></img>
+          <i class="icon ion-close-circled" style="position: relative; left: -10px; top: -27px; color: red; width: 10px;height: 10px" ng-click="resetSelectedImage(0)" ng-if="imageList.length > 0"></i>
+
+          <button class="button button-small icon ion-plus" style="width: 35px;border-style:dashed; margin-left: 11px" ng-click="selectPicture($event,2)" ng-if="imageList.length <= 1"></button>
+          <img style="width: 50px; height:50px;border-style:dashed; margin-left: -5px" src="{{imageList[1]}}" ng-if="imageList.length > 1" ng-click="showImage('{{imageList[1]}}')"></img>
+          <i class="icon ion-close-circled" style="position: relative; left: -10px; top: -27px; color: red; width: 10px;height: 10px" ng-click="resetSelectedImage(1)" ng-if="imageList.length > 1"></i>
+
+          <button class="button button-small icon ion-plus" style="width: 35px;border-style:dashed; margin-left: 11px" ng-click="selectPicture($event,3)" ng-if="imageList.length <= 2"></button>
+          <img style="width: 50px; height:50px;border-style:dashed; margin-left: -5px" src="{{imageList[2]}}" ng-if="imageList.length > 2" ng-click="showImage('{{imageList[2]}}')"></img>
+          <i class="icon ion-close-circled" style="position: relative; left: -10px; top: -27px; color: red; width: 10px;height: 10px" ng-click="resetSelectedImage(2)" ng-if="imageList.length > 2"></i>
+        </div>
+
+        <div style="height: 10px; background-color: #f7f7f7"></div>
+
+        <div class="item item-input" style="box-shadow:0px 0px 3px #DDDDDD;">
+          <div class="input-label">
+            拍摄视频(60秒以内):
+          </div>
+          <button class="button button-small icon ion-plus" style="width: 35px;border-style:dashed" ng-click="captureVideo()" ng-hide="video.hasVideo"></button>
+          <img style="width: 55px; height:55px;border-style:dashed; margin-left: 15px" src="images/video-image.png" ng-click="showVideo()" ng-if="video.hasVideo"></img>
+          <i class="icon ion-close-circled" style="position: relative; left: -7px; top: -27px; color: red; width: 10px;height: 10px" ng-click="resetSelectedVideo()" ng-if="video.hasVideo"></i>
+        </div>
+
+        <button class="button button-full button-assertive pbtn" ng-click="submitFillData()">提交</button>
+
+    </div>
+    <div ng-if="view.fillForms.length == 0" style="color: #999999; line-height: 300px;text-align: center;">
+      没有表单数据
+    </div>
+    <!-- {{view.fillForms}} -->
+  </ion-content>
+</ion-vew>
