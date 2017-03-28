@@ -1,33 +1,42 @@
 <style type="text/css">
-.popup-container .popup{
-	max-height:162px;
-}
+  .popup-container .popup {
+    max-height: 162px;
+  }
 </style>
 <ion-view hide-nav-bar="true" cache-view="false">
-  
- <ion-header-bar class="bar-stable">
+
+  <ion-header-bar class="bar-stable">
     <div class="buttons">
-    <button nav-direction="back" class="button button-clear button-icon button-positive icon ion-ios-arrow-back" ng-click="FriendHBack()"> </button>
+      <button nav-direction="back" class="button button-clear button-icon button-positive icon ion-ios-arrow-back" ng-click="FriendHBack()"> </button>
     </div>
     <div class="ntitle" style="padding: 5px 0;left:60px;right:60px;">
-      <div class="button-bar bar-light"> <a class="button button-outline button-positive" ng-class="{active: $state.includes('tab.friends')}" href="#/tab/friends">我的好友</a><a class="button button-outline button-positive" ng-class="{active: $state.includes('tab.factive')}" href="#/tab/factive" style="position:relative">新的好友<i ng-if="verifyNumber > 0" style="padding: 3px;position: absolute; right: 10px;top: 50%;background-color: #ee6800;border-radius: 3px;margin-top: -3px;"></i></a></div>
+      <div class="button-bar bar-light"> <a class="button button-outline button-positive" ng-class="{active: $state.includes('tab.friends')}" href="#/tab/friends">我的好友</a>
+        <a class="button button-outline button-positive" ng-class="{active: $state.includes('tab.factive')}" href="#/tab/factive"
+          style="position:relative">新的好友<i ng-if="verifyNumber > 0" style="padding: 3px;position: absolute; right: 10px;top: 50%;background-color: #ee6800;border-radius: 3px;margin-top: -3px;"></i></a>
+      </div>
     </div>
     <div class="buttons">
       <button class="button button-clear button-icon button-positive icon ion-ios-plus-empty" ng-click="showPromptAdd()" style="position: absolute; right: 5px;"></button>
     </div>
   </ion-header-bar>
-  
-  <ion-content id="online">
-	<span ng-repeat="user in friends">
-	  <ion-toggle class="item-avatar" type="item-text-wrap" ng-model="online_on" ng-if="user.verifyStatus == '0' && user.verifyType == 'requested'" ng-change="goVerifyFriend(user,this)"> <img ng-src="{{user.thumbnail}}"/>
-		<h3> <small>{{user.title}}</small> </h3>
-		<p>{{user.verifyMessage}}</p>
-	  </ion-toggle>
-	  <ion-item class="item-avatar" type="item-text-wrap" ng-if="user.verifyStatus == '9' && user.verifyType == 'requested'" nav-direction="forward"> <img ng-src="{{user.thumbnail}}" />
-        <h3> <small>{{user.title}}</small> </h3>
-		<p>拒绝</p>
-      </ion-item>
 
+  <ion-content id="online">
+    <span ng-repeat="user in friends">
+  <ion-item class="item-avatar" type="item-text-wrap"  ng-if="user.verifyStatus == '0' && user.verifyType == 'requested'" nav-direction="forward"> <img ng-src="{{user.thumbnail}}" />
+  <div class="row" style="padding:0;">
+  <div class="col" style="width:70%;"><h3><small>{{user.title}}</small></h3><p>{{user.verifyMessage}}</p> </div>
+  <div class="col">
+  <button class="button button-small button-positive" style="width:50px; height:10px;float:right; border-radius:5px;" ng-click="goVerifyFriend(user,this)">
+  接受
+  </button></div></div>
+  </ion-item>
+  <ion-item class="item-avatar" type="item-text-wrap"  ng-if="user.verifyStatus == '1'" nav-direction="forward"> <img ng-src="{{user.thumbnail}}" />
+    <div class="row" style="padding:0;">
+    <div class="col" style="width:70%;"><h3><small>{{user.title}}</small></h3><p> </p> </div>
+    <div class="col" style=" text-align:right; padding-right:6px; font-size:13px; color:#a2a2a2; letter-spacing:2px; line-height:35px;">已添加</div>
+    </div>
+  </ion-item>
+      
 	  <ion-item class="item-avatar" type="item-text-wrap" ng-if="user.verifyStatus == '0' && user.verifyType == 'request'" nav-direction="forward"> <img ng-src="{{user.thumbnail}}" />
         <h3> <small>{{user.title}}</small> </h3>
 		<p>等待对方验证</p>

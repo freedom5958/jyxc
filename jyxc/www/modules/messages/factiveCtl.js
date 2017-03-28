@@ -104,10 +104,12 @@ appMain.controller("factiveCtl", function($scope, $stateParams, $ionicPopup, Use
 	
 
 	$scope.goVerifyFriend = function(user,el){
+		console.log("触发了接受好友请求事件");
 		//极光注册对方信息
 		NJMessage.register(user.userId,'99SDRAKCY',function(data){});
 		//向服务器请求
 		LTAction.requestConfirmFriend(function(data){
+			console.log(data);
 			if(data.success){
 				$scope.updateVerify();
 				//将内容更变
